@@ -66,6 +66,12 @@ onMounted(() => {
         </div>
         <div class="header-actions">
            <button
+             @click="$emit('navigate-to-job-creator')"
+             class="job-creator-btn"
+           >
+             💬 Create Job
+           </button>
+           <button
              @click="$emit('navigate-to-graph')"
              class="graph-btn"
            >
@@ -307,6 +313,22 @@ onMounted(() => {
   display: flex;
   align-items: center;
   gap: 16px;
+}
+
+.job-creator-btn {
+  background: rgba(139, 92, 246, 0.8);
+  border: 1px solid rgba(139, 92, 246, 0.5);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.job-creator-btn:hover {
+  background: rgba(139, 92, 246, 0.9);
+  transform: translateY(-1px);
 }
 
 .graph-btn {
