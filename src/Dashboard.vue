@@ -65,18 +65,24 @@ onMounted(() => {
           </div>
         </div>
         <div class="header-actions">
-          <button
-            @click="refreshData"
-            :disabled="isLoading"
-            class="refresh-btn"
-          >
-            {{ isLoading ? 'Refreshing...' : '🔄 Refresh' }}
-          </button>
-          <div class="connection-status">
-            <span class="status-indicator connected"></span>
-            Data Loaded
-          </div>
-        </div>
+           <button
+             @click="$emit('navigate-to-graph')"
+             class="graph-btn"
+           >
+             📊 Network Graph
+           </button>
+           <button
+             @click="refreshData"
+             :disabled="isLoading"
+             class="refresh-btn"
+           >
+             {{ isLoading ? 'Refreshing...' : '🔄 Refresh' }}
+           </button>
+           <div class="connection-status">
+             <span class="status-indicator connected"></span>
+             Data Loaded
+           </div>
+         </div>
       </header>
 
       <div v-if="error" class="error-banner">
@@ -301,6 +307,22 @@ onMounted(() => {
   display: flex;
   align-items: center;
   gap: 16px;
+}
+
+.graph-btn {
+  background: rgba(16, 185, 129, 0.8);
+  border: 1px solid rgba(16, 185, 129, 0.5);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.graph-btn:hover {
+  background: rgba(16, 185, 129, 0.9);
+  transform: translateY(-1px);
 }
 
 .refresh-btn {

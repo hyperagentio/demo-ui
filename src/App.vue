@@ -1,9 +1,24 @@
 <script setup>
+import { ref } from 'vue'
 import Dashboard from './Dashboard.vue'
+import AgentGraph from './AgentGraph.vue'
+
+// View state
+const currentView = ref('dashboard') // 'dashboard' or 'graph'
+
+// Navigation handlers
+const navigateToGraph = () => {
+  currentView.value = 'graph'
+}
+
+const navigateToDashboard = () => {
+  currentView.value = 'dashboard'
+}
 </script>
 
 <template>
-  <Dashboard />
+  <Dashboard v-if="currentView === 'dashboard'" @navigate-to-graph="navigateToGraph" />
+  <AgentGraph v-else @navigate-back="navigateToDashboard" />
 </template>
 
 <style>
