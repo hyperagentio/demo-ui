@@ -1,0 +1,422 @@
+[
+  {
+    "type": "constructor",
+    "inputs": [
+      {
+        "name": "_hyptToken",
+        "type": "address",
+        "internalType": "contract IERC20"
+      },
+      {
+        "name": "_identityRegistry",
+        "type": "address",
+        "internalType": "contract IIdentityRegistry"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "IDENTITY_REGISTRY",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "contract IIdentityRegistry"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "PAYMENT_COOLDOWN",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "acceptJob",
+    "inputs": [
+      { "name": "jobId", "type": "bytes32", "internalType": "bytes32" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "acceptMultihopJobStep",
+    "inputs": [
+      { "name": "multihopId", "type": "bytes32", "internalType": "bytes32" },
+      { "name": "stepIndex", "type": "uint64", "internalType": "uint64" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "cancelJob",
+    "inputs": [
+      { "name": "jobId", "type": "bytes32", "internalType": "bytes32" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "cancelMultihop",
+    "inputs": [
+      { "name": "multihopId", "type": "bytes32", "internalType": "bytes32" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "clients",
+    "inputs": [
+      { "name": "", "type": "uint256", "internalType": "uint256" },
+      { "name": "", "type": "uint256", "internalType": "uint256" }
+    ],
+    "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "completeJob",
+    "inputs": [
+      { "name": "jobId", "type": "bytes32", "internalType": "bytes32" },
+      { "name": "outputUrl", "type": "string", "internalType": "string" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "completeMultihopJobStep",
+    "inputs": [
+      { "name": "multihopId", "type": "bytes32", "internalType": "bytes32" },
+      { "name": "stepIndex", "type": "uint64", "internalType": "uint64" },
+      { "name": "outputUrl", "type": "string", "internalType": "string" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "name": "createJob",
+    "type": "function",
+    "inputs": [
+      { "name": "agentId", "type": "uint256" },
+      { "name": "budget", "type": "uint256" },
+      { "name": "description", "type": "string" },
+      { "name": "acceptDeadline", "type": "uint64" },
+      { "name": "completeDeadline", "type": "uint64" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "createMultihopJob",
+    "inputs": [
+      {
+        "name": "steps",
+        "type": "tuple[]",
+        "internalType": "struct IJobsModule.JobStepParams[]",
+        "components": [
+          { "name": "agentId", "type": "uint256", "internalType": "uint256" },
+          { "name": "budget", "type": "uint256", "internalType": "uint256" },
+          {
+            "name": "description",
+            "type": "string",
+            "internalType": "string"
+          },
+          {
+            "name": "acceptDeadline",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "completeDeadline",
+            "type": "uint64",
+            "internalType": "uint64"
+          }
+        ]
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "getClients",
+    "inputs": [
+      { "name": "agentId", "type": "uint256", "internalType": "uint256" }
+    ],
+    "outputs": [
+      { "name": "", "type": "address[]", "internalType": "address[]" }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getJob",
+    "inputs": [
+      { "name": "jobId", "type": "bytes32", "internalType": "bytes32" }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct IJobsModule.Job",
+        "components": [
+          { "name": "creator", "type": "address", "internalType": "address" },
+          { "name": "agentId", "type": "uint256", "internalType": "uint256" },
+          { "name": "budget", "type": "uint256", "internalType": "uint256" },
+          {
+            "name": "description",
+            "type": "string",
+            "internalType": "string"
+          },
+          {
+            "name": "state",
+            "type": "uint8",
+            "internalType": "enum IJobsModule.State"
+          },
+          { "name": "createdAt", "type": "uint64", "internalType": "uint64" },
+          {
+            "name": "acceptDeadline",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "completeDeadline",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "multihopId",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          { "name": "step", "type": "uint64", "internalType": "uint64" }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getMultihopJob",
+    "inputs": [
+      { "name": "multihopId", "type": "bytes32", "internalType": "bytes32" }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct IJobsModule.Multihop",
+        "components": [
+          { "name": "creator", "type": "address", "internalType": "address" },
+          { "name": "state", "type": "uint8", "internalType": "uint8" },
+          { "name": "stepsCount", "type": "uint64", "internalType": "uint64" }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getMultihopJobStep",
+    "inputs": [
+      { "name": "multihopId", "type": "bytes32", "internalType": "bytes32" },
+      { "name": "stepIndex", "type": "uint64", "internalType": "uint64" }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "internalType": "struct IJobsModule.Job",
+        "components": [
+          { "name": "creator", "type": "address", "internalType": "address" },
+          { "name": "agentId", "type": "uint256", "internalType": "uint256" },
+          { "name": "budget", "type": "uint256", "internalType": "uint256" },
+          {
+            "name": "description",
+            "type": "string",
+            "internalType": "string"
+          },
+          {
+            "name": "state",
+            "type": "uint8",
+            "internalType": "enum IJobsModule.State"
+          },
+          { "name": "createdAt", "type": "uint64", "internalType": "uint64" },
+          {
+            "name": "acceptDeadline",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "completeDeadline",
+            "type": "uint64",
+            "internalType": "uint64"
+          },
+          {
+            "name": "multihopId",
+            "type": "bytes32",
+            "internalType": "bytes32"
+          },
+          { "name": "step", "type": "uint64", "internalType": "uint64" }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getOutputUrl",
+    "inputs": [
+      { "name": "jobId", "type": "bytes32", "internalType": "bytes32" }
+    ],
+    "outputs": [{ "name": "", "type": "string", "internalType": "string" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "hyptToken",
+    "inputs": [],
+    "outputs": [
+      { "name": "", "type": "address", "internalType": "contract IERC20" }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "jobs",
+    "inputs": [{ "name": "", "type": "bytes32", "internalType": "bytes32" }],
+    "outputs": [
+      { "name": "creator", "type": "address", "internalType": "address" },
+      { "name": "agentId", "type": "uint256", "internalType": "uint256" },
+      { "name": "budget", "type": "uint256", "internalType": "uint256" },
+      { "name": "description", "type": "string", "internalType": "string" },
+      {
+        "name": "state",
+        "type": "uint8",
+        "internalType": "enum IJobsModule.State"
+      },
+      { "name": "createdAt", "type": "uint64", "internalType": "uint64" },
+      {
+        "name": "acceptDeadline",
+        "type": "uint64",
+        "internalType": "uint64"
+      },
+      {
+        "name": "completeDeadline",
+        "type": "uint64",
+        "internalType": "uint64"
+      },
+      { "name": "multihopId", "type": "bytes32", "internalType": "bytes32" },
+      { "name": "step", "type": "uint64", "internalType": "uint64" }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "multihopSteps",
+    "inputs": [
+      { "name": "", "type": "bytes32", "internalType": "bytes32" },
+      { "name": "", "type": "uint64", "internalType": "uint64" }
+    ],
+    "outputs": [
+      { "name": "creator", "type": "address", "internalType": "address" },
+      { "name": "agentId", "type": "uint256", "internalType": "uint256" },
+      { "name": "budget", "type": "uint256", "internalType": "uint256" },
+      { "name": "description", "type": "string", "internalType": "string" },
+      {
+        "name": "state",
+        "type": "uint8",
+        "internalType": "enum IJobsModule.State"
+      },
+      { "name": "createdAt", "type": "uint64", "internalType": "uint64" },
+      {
+        "name": "acceptDeadline",
+        "type": "uint64",
+        "internalType": "uint64"
+      },
+      {
+        "name": "completeDeadline",
+        "type": "uint64",
+        "internalType": "uint64"
+      },
+      { "name": "multihopId", "type": "bytes32", "internalType": "bytes32" },
+      { "name": "step", "type": "uint64", "internalType": "uint64" }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "multihops",
+    "inputs": [{ "name": "", "type": "bytes32", "internalType": "bytes32" }],
+    "outputs": [
+      { "name": "creator", "type": "address", "internalType": "address" },
+      { "name": "state", "type": "uint8", "internalType": "uint8" },
+      { "name": "stepsCount", "type": "uint64", "internalType": "uint64" }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "outputUrls",
+    "inputs": [{ "name": "", "type": "bytes32", "internalType": "bytes32" }],
+    "outputs": [{ "name": "", "type": "string", "internalType": "string" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "releaseMultihopPayment",
+    "inputs": [
+      { "name": "multihopId", "type": "bytes32", "internalType": "bytes32" },
+      { "name": "stepIndex", "type": "uint64", "internalType": "uint64" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "releasePayment",
+    "inputs": [
+      { "name": "jobId", "type": "bytes32", "internalType": "bytes32" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "updateBudget",
+    "inputs": [
+      { "name": "jobId", "type": "bytes32", "internalType": "bytes32" },
+      { "name": "newBudget", "type": "uint256", "internalType": "uint256" }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  { "type": "error", "name": "AcceptDeadlinePassed", "inputs": [] },
+  { "type": "error", "name": "AgentNotRegistered", "inputs": [] },
+  { "type": "error", "name": "CompleteDeadlinePassed", "inputs": [] },
+  { "type": "error", "name": "CooldownNotPassed", "inputs": [] },
+  { "type": "error", "name": "InvalidDeadline", "inputs": [] },
+  { "type": "error", "name": "JobNotCompleted", "inputs": [] },
+  { "type": "error", "name": "JobNotOngoing", "inputs": [] },
+  { "type": "error", "name": "JobNotOpen", "inputs": [] },
+  { "type": "error", "name": "MultihopNotOpen", "inputs": [] },
+  {
+    "type": "error",
+    "name": "SafeERC20FailedOperation",
+    "inputs": [
+      { "name": "token", "type": "address", "internalType": "address" }
+    ]
+  },
+  { "type": "error", "name": "Unauthorized", "inputs": [] }
+]
